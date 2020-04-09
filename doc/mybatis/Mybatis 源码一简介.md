@@ -1,5 +1,5 @@
-Mybatis源码解析一
-================
+Mybatis源码解析一简介
+===================
 
 #### Mybatis简介
 MyBatis是一个可以自定义SQL、存储过程和高级映射的持久层框架。MyBatis摒除了大部门的JDBC代码，手工设置参数和结果集重获。MyBatis只使用简单的XML和注解来配置和映射基本数据类型、Map接口和POJO到数据记录，相对Hibernate是一种半自动化的ORM实现。
