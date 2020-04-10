@@ -13,5 +13,5 @@
 #### 算法
 
 #### 设计模式
-1. 策略模式   --- 2019.05.20 16:19
+1. [策略模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.md)   [CODE]() --- 2019.05.20 16:19
 2. 观察者模式  --- 2019.05.22 14:49
