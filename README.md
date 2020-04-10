@@ -14,4 +14,4 @@
 
 #### 设计模式
 1. [策略模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.md)   [代码CODE](https://github.com/LuoJhno/knowledge/tree/master/code/src/designPatterns/strategy) --- 2019.05.20 16:19
-2. [观察者模式]()   [代码CODE]()  --- 2019.05.22 14:49
+2. [观察者模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.md)   [代码CODE]()  --- 2019.05.22 14:49
