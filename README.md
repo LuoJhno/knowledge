@@ -7,8 +7,8 @@
 
 
 #### 技术文档
-1. [MyBatis 源码一]()  --- 2019.07.10 21:05
-1. [MyBatis 配置解析]()  --- 2019.07.13 21:46
+1. [MyBatis 源码一](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E6%BA%90%E7%A0%81%E4%B8%80%E7%AE%80%E4%BB%8B.md)  --- 2019.07.10 21:05
+1. [MyBatis 配置解析](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E6%BA%90%E7%A0%81%E4%BA%8C%E4%B9%8B%E9%85%8D%E7%BD%AE%E8%A7%A3%E6%9E%90.md)  --- 2019.07.13 21:46
 
 #### 算法
 
