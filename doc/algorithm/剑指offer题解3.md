@@ -1,0 +1,54 @@
+数组中重复的数字
+==============
+[马上解题](https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&tqId=11203&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
+
+##### 题目描述
+在一个长度为 n 的数组里的所有数字都在 0 到 n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字是重复的，也不知道每个数字重复几次。请找出数组中任意一个重复的数字。
+```
+Input:
+{2, 3, 1, 0, 2, 5}
+
+Output:
+2
+```
+###### 解题思路
+1. 合理利用已有的数据结构，HashSet能有效的解决重复问题。此时时间复杂度为O(N),空间复杂度为O(N)。
+2. 将每个数字都放到他自己的位置，如果在换位置时，已经有与位置的index相同的数字时，则为重复数字。此时时间复杂度为O(N),空间复杂度为O(1)。
+![图解](https://upload-images.jianshu.io/upload_images/8907519-88222009f32cf517.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+##### 代码
+1. 思路一
+```
+ public static int duplicate1(int[] arr) {
+        Set<Integer> set = new HashSet<>();
+        for (int i : arr) {
+            if (set.add(i)) {
+                return i;
+            }
+        }
+        return Integer.parseInt(null);
+    }
+```
+2. 思路二
+```
+public static int duplicate2(int[] arr) {
+        if (null == arr || arr.length == 0) {
+            return Integer.parseInt(null);
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != i) {
+                if (arr[arr[i]] == arr[i]) {
+                    return arr[i];
+                }
+                //交换
+                swap(arr, arr[i], i);
+            }
+        }
+        return Integer.parseInt(null);
+    }
+
+    private static void swap(int[] arr, int index1, int index2) {
+        int temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
+    }
+```
