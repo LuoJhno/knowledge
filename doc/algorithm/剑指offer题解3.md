@@ -11,7 +11,7 @@ Input:
 Output:
 2
 ```
-###### 解题思路
+##### 解题思路
 1. 合理利用已有的数据结构，HashSet能有效的解决重复问题。此时时间复杂度为O(N),空间复杂度为O(N)。
 2. 将每个数字都放到他自己的位置，如果在换位置时，已经有与位置的index相同的数字时，则为重复数字。此时时间复杂度为O(N),空间复杂度为O(1)。
 ![图解](https://upload-images.jianshu.io/upload_images/8907519-88222009f32cf517.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
