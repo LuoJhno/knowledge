@@ -15,9 +15,9 @@
 
 #### 算法
 **剑指OFFER**
-  1. 剑指OFFER题解3---[数组中重复的数字](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A33.md)---[代码](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm3.java)
-  1. 剑指OFFER题解4---[二维数组中的查找](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A34.md)---[代码](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm4.java)
-  1. 剑指OFFER题解5---[替换空格](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A35.md)---[代码](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm5.java)
+  1. [数组中重复的数字](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A33.md)---[代码](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm3.java)
+  1. [二维数组中的查找](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A34.md)---[代码](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm4.java)
+  1. [替换空格](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A35.md)---[代码](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm5.java)
 
 #### 设计模式
 1. [策略模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.md)   [代码CODE](https://github.com/LuoJhno/knowledge/tree/master/code/src/designPatterns/strategy) --- 2019.05.20 16:19
