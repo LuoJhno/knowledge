@@ -21,6 +21,8 @@ Knowledge By ZhengJun Fu
   1. [二维数组中的查找](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A34.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm4.java)
   1. [替换空格](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A35.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm5.java)
   1. [从尾到头打印链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A36.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm6.java)
+  1. [重建二叉树](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A37.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm7.java)
+  1. [二叉树的下一个节点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A38.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm8.java)
 > **leetcode**
 
 #### 设计模式
