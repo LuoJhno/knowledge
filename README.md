@@ -13,16 +13,18 @@ Knowledge By ZhengJun Fu
 1. [Mybatis 映射文件配置](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE.md)  --- 2019.07.14 22:33
 1. [Mybatis 动态SQL](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E5%8A%A8%E6%80%81SQL.md)   --- 2019.07.18 22:27
 > **JVM**  
+> **计算机组成**
+> **计算机网络**
 
 
 #### 算法
 > **剑指OFFER**
-  1. [数组中重复的数字](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A33.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm3.java)
-  1. [二维数组中的查找](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A34.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm4.java)
-  1. [替换空格](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A35.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm5.java)
-  1. [从尾到头打印链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A36.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm6.java)
-  1. [重建二叉树](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A37.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm7.java)
-  1. [二叉树的下一个节点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A38.md)---[代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm8.java)
+  1. [数组中重复的数字](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A33.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm3.java)
+  1. [二维数组中的查找](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A34.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm4.java)
+  1. [替换空格](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A35.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm5.java)
+  1. [从尾到头打印链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A36.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm6.java)
+  1. [重建二叉树](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A37.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm7.java)
+  1. [二叉树的下一个节点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A38.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm8.java)
 > **leetcode**
 
 #### 设计模式
