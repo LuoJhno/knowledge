@@ -9,6 +9,7 @@ Redis有五种对象类型：String，List，Set，ZSet，Hash。进一步的理
 本文主要是针对3.0的Redis的内存模型，包括：Redis占用内存的情况及如何查询、不同的对象类型在内存中的编码方式、内存分配器（jemalloc）、简单动态字符串（SDS）,RedisObject等。
 ##### 二、Redis内存统计
 ###### 1.info memory 
+
 ![info memory](https://upload-images.jianshu.io/upload_images/8907519-278777cc0b9243c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 info命令可以显示redis服务器的许多信息，包括服务器基本信息，CPU，内存，持久化，客户端连接信息等；memory是参数，表示只显示内存相关的信息。
 **1.used_memory**
@@ -41,6 +42,7 @@ Redis主进程本身运行肯定需要占用内存，如代码、常量池等，
 ###### 1、概述
 关于Redis数据存储的细节，设计到内存分配器（jemalloc）、简单动态字符串（SDS）、5中对象类型及内部编码、RedisObject。
 下图是执行set hello world时，所涉及到的数据模型：
+
 ![hello world](https://upload-images.jianshu.io/upload_images/8907519-fac47bc66889082e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 **dictEntry,**Redis是Key-Value数据库，因此对每个键值对都会用一个dictEntry，里面存储了指向Key和Value的指针；next指向下一个dictEntry，与本Key-Value无关。
 **Key**（“hello”）并不是直接以字符串存储，而是存储在SDS结构中。
@@ -49,6 +51,7 @@ Redis主进程本身运行肯定需要占用内存，如代码、常量池等，
 ###### 2、jemalloc
 Redis在编译时便会指定内存分配器；内存分配器可以是 libc 、jemalloc或者tcmalloc，默认是jemalloc。
 jemalloc作为Redis的默认内存分配器，在减小内存碎片方面做的相对比较好。jemalloc在64位系统中，将内存空间划分为小、大、巨大三个范围；每个范围内又划分了许多小的内存块单位；当Redis存储数据时，会选择大小最合适的内存块进行存储。
+
 ![jemalloc划分的内存单元](https://upload-images.jianshu.io/upload_images/8907519-01d33a8f74500d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 例如，如果需要存储大小为130字节的对象，jemalloc会将其放入160字节的内存单元中。
 ###### 3、RedisObject
@@ -65,13 +68,16 @@ type def struct redisObject {　　
 ```
 **type**表示对象的类型，占4个bite；目前包括REDIS_STRING,REDIS_LIST,REDIS_HASH,REDIS_SET,REDIS_ZSET。
 当我们执行type命令时，便是通过读取RedisObject的type字段获得对象的类型。
+
 ![image.png](https://upload-images.jianshu.io/upload_images/8907519-3e1353bb8277e2d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 **encoding**表示对象的内部编码，占4个bite。
 encoding表示对象的内部编码，占4个比特。对于Redis支持的每种类型，都有至少两种内部编码，例如对于字符串，有int、embstr、raw三种编码。通过encoding属性，Redis可以根据不同的使用场景来为对象设置不同的编码，大大提高了Redis的灵活性和效率。
 以列表对象为例，有压缩列表和双端链表两种编码方式；如果列表中的元素较少，Redis倾向于使用压缩列表进行存储，因为压缩列表占用内存更少，而且比双端链表可以更快载入；当列表对象元素较多时，压缩列表就会转化为更适合存储大量元素的双端链表。通过object encoding命令，可以查看对象采用的编码方式，如下图所示：
+
 ![image.png](https://upload-images.jianshu.io/upload_images/8907519-7ac9e8f660d29098.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 **lru**记录的是对象最后一次被命令程序访问的时间，占据的比特数不同的版本有所不同（如4.0版本占24比特，2.6版本占22比特）。
 通过对比lru时间与当前时间，可以计算某个对象的空转时间；object idletime命令可以显示该空转时间（单位是秒）。object idletime命令的一个特殊之处在于它不改变对象的lru值。
+
 ![image.png](https://upload-images.jianshu.io/upload_images/8907519-c6e4b736987c1e74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 lru值除了通过object idletime命令打印之外，还与Redis的内存回收有关系：如果Redis打开了maxmemory选项，且内存回收算法选择的是volatile-lru或allkeys—lru，那么当Redis内存占用超过maxmemory指定的值时，Redis会优先选择空转时间最长的对象进行释放。
 **refcount**记录该对象被引用的次数，类型为整型，refcount的作用，主要在于对象的引用技术和内存回收：当创建新对象时，refcount初始化为1；当有新程序使用该对象时，refcount加1；当对象不再被一个新程序使用时，refcount减1；当refcount变为0时，对象占用的内存会被释放。
@@ -79,6 +85,7 @@ Redis中被多次使用的对象(refcount>1)称为共享对象。Redis为了节�
 Redis的共享对象目前只支持整数值的字符串对象。之所以如此，实际上是对内存和CPU（时间）的平衡：共享对象虽然会降低内存消耗，但是判断两个对象是否相等却需要消耗额外的时间。对于整数值，判断操作复杂度为O(1)；对于普通字符串，判断复杂度为O(n)；而对于哈希、列表、集合和有序集合，判断的复杂度为O(n^2)。虽然共享对象只能是整数值的字符串对象，但是5种类型都可能使用共享对象（如哈希、列表等的元素可以使用）。
 就目前的实现来说，Redis服务器在初始化时，会创建10000个字符串对象，值分别是0~9999的整数值；当Redis需要使用值为0 ~ 9999的字符串对象时，可以直接使用这些共享对象。10000这个数字可以通过调整参数REDIS_SHARED_INTEGERS（4.0中是OBJ_SHARED_INTEGERS）的值进行改变。
 共享对象的引用次数可以通过object refcount命令查看，如下图所示。命令执行的结果页佐证了只有0 ~ 9999之间的整数会作为共享对象。
+
 ![object refcount](https://upload-images.jianshu.io/upload_images/8907519-45dc34fd9cb0de88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 **ptr**指针指向具体的数据，如前面的例子中，set hello world，ptr指向包含字符串world的SDS。
 **总结**
@@ -92,7 +99,9 @@ struct sdshdr {
 };
 ```
 其中，buf表示字节数组，用来存储字符串；len表示buf的已使用的长度；free表示buf未使用的长度。
+
 ![image.png](https://upload-images.jianshu.io/upload_images/8907519-7096018360d0ae99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ![image.png](https://upload-images.jianshu.io/upload_images/8907519-46ca579cbfc51395.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 通过SDS的结构可以看出，buf数组的长度=free+len+1（其中1表示字符串结尾的空字符）；所以，一个SDS结构占据的空间为：free所占长度+len所占长度+ buf数组的长度=4+4+free+len+1=free+len+9。
 **SDS和C字符串的比较**
@@ -104,6 +113,7 @@ Redis在存储对象时，一律使用SDS代替C字符串。例如set hello worl
 只有在字符串不会改变的情况下，如打印日志时，才会使用C字符串
 ##### 四 、Redis的对象类型和内部编码
 Redis支持5种对象类型，而每种结构都有至少两种编码。这样做的好处在于：一方面接口与实现分离，当需要增加或改变内部编码时，用户使用不受影响，另一方面可以根据不同的应用场景切换内部编码，提高效率。
+
 ![Redis对象类型和内部编码](https://upload-images.jianshu.io/upload_images/8907519-44d622dee6565b58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 关于Redis内部编码的转换，都符合以下规律：编码吗转换再Redis写入数据时完成，且转换过程不可逆，只能从小内存编码想大内存编码转换。
 #####1.字符串
@@ -112,14 +122,17 @@ Redis支持5种对象类型，而每种结构都有至少两种编码。这样�
 **int：**8个字节的长整型。字符串值是整型时，这个值使用long整型表示。
 **embstr：**<=39字节的字符串。embstr与raw都是用RedisObject和SDS保存数据。区别在于：embstr的使用只分配一次内存空间（因此RedisObject和SDS是连续的），而raw需要分配两次内存空间（分别为RedisObject和SDS分配空间）。因此embstre的好处在于创建时少分配一次空间、删除时少释放一次空间、对象的所有数据连续，寻找方便。而embstr的坏处也很明显：如果字符串的长度增加需要重新分配内存时，整个RedisObject和SDS都需要重新分配空间，因此Redis中的embstr实现为只读。
 **raw：**大于39字节的字符串。
+
 ![示例](https://upload-images.jianshu.io/upload_images/8907519-b2ecf60888a4c80f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 embstr和raw进行区分的长度是39是因为RedisObject的长度是16字节，SDS的长度是9+字符串长度.因此当字符串长度是39时，embstr的长度正好是16+9+39=64，jemalloc正好可以分配64字节的内存单元。
 当int数据不再是整数，或大小超过了long的范围时，自动转化为raw。而对于embstr，由于其实现是只读的，因此在对embstr对象进行修改时，都会先转化为raw再进行修改，因此，只要是修改embstr对象，修改后的对象一定是raw的，无论是否达到了39个字节。示例如下图所示：
+
 ![test](https://upload-images.jianshu.io/upload_images/8907519-2244505a9a90a314.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 #####2.列表
 列表用来存储多个有序的字符串，每个字符串称为元素；一个列表可以存储2^32-1个元素。Redis中的列表支持两端插入和弹出，并可以获得制定位置（或元素）的元素，可以充当数组、队列、栈等。
 列表的内部编码可以是压缩链表（ziplist）或者双端链表（linkedlist）。
 **双端链表：**由一个list结构和多个listNode结构组成，典型结构如图所示：
+
 ![双端链表结构](https://upload-images.jianshu.io/upload_images/8907519-1d65ef5300b75b99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 双端链表同时保存了表头指针和表尾指针，并且每个节点都有指向前和指向后的指针。链表中保存了列表的长度，dup、free和match为节点值设置类型特定函数，所以链表可以用于保存各种不同类型的值。而链表中每个节点指向的是type为字符串的RedisObject。
 **压缩链表：**是Redis为了节约内存而开发的，是由一系列特殊编码的连续内存块（而不是像双端链表一样每个节点是指针）组成的顺序型数据结构；具体结构相对比较复杂，略。与双端链表相比，压缩列表可以节省内存空间，但是进行修改或增删操作时，复杂度较高，因此当节点数量较少时，可以使用压缩列表。但是节点数量多时，还是使用双端链表划算。
@@ -128,6 +141,7 @@ embstr和raw进行区分的长度是39是因为RedisObject的长度是16字节�
 列表中元素数量小于512个；
 列表中所有字符串对象都不足64字节。
 如果有一个条件不满足，则使用双端链表，且编码只可能由压缩链表转换为双端链表，反方向则不可能。
+
 ![test](https://upload-images.jianshu.io/upload_images/8907519-2cf1ad1cedb2d92e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 其中，单个字符串不能超过64字节，是为了便于统一分配每个节点的长度。这里的64字节是指字符串的长度，不包括SDS结构，因为压缩列表使用连续、定长内存块存储字符串，不需要SDS结构指明长度。后面提到压缩列表，也会强调长度不超过64字节，原理与这里类似。
 #####3.哈希
@@ -136,6 +150,7 @@ embstr和raw进行区分的长度是39是因为RedisObject的长度是16字节�
 **压缩列表：**与哈希表相比，压缩列表用于元素个数少、元素长度小的场景，其优势在于集中存储，节省空间。同时，虽然对于元素的操作复杂度也由O(n)变为了O(1)，但由于哈希中元素数量较少，因此操作的时间并没有明显劣势。
 **hashtable：**一个hashtable由1个dict结构，2个dictht结构，1个dictEntry指针数组（称为bucket）和多个dictEntry结构组成。
 正常情况下，即hashtable没有进行rehash时，各部分关系如下图所示：
+
 ![hashtable结构](https://upload-images.jianshu.io/upload_images/8907519-0744a0c4b6497ac9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 dictEntry：
@@ -180,6 +195,7 @@ typedef struct dict{
 其中，type属性和privdata属性是为了适应不同类型的键值对，用于创建多态字典。ht属性和trehashidx属性则用于rehash，即当哈希表需要扩展或收缩时使用。ht是一个包含两个项的数组，每项都指向一个dictht结构，这也是Redis的哈希会有1个dict、2个dictht结构的原因。通常情况下，所有的数据都是存在放dict的ht[0]中，ht[1]只在rehash的时候使用。dict进行rehash操作的时候，将ht[0]中的所有数据rehash到ht[1]中。然后将ht[1]赋值给ht[0]，并清空ht[1]。因此，Redis中的哈希之所以在dictht和dictEntry结构之外还有一个dict结构，一方面是为了适应不同类型的键值对，另一方面是为了rehash。
 
 如前所述，Redis中内层的哈希既可能使用哈希表，也可能使用压缩列表。只有同时满足下面两个条件时，才会使用压缩列表：哈希中元素数量小于512个；哈希中所有键值对的键和值字符串长度都小于64字节。如果有一个条件不满足，则使用哈希表；且编码只可能由压缩列表转化为哈希表，反方向则不可能。下图展示了Redis内层的哈希编码转换的特点：
+
 ![test](https://upload-images.jianshu.io/upload_images/8907519-55133a793ac50b17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 #####4.集合
 集合（set）与列表类似，都是用来保存多个字符串，但集合与列表有两点不同：集合中的元素是无序的，因此不能通过索引来操作元素；集合中的元素不能有重复。
@@ -199,6 +215,7 @@ typedef struct intset{
 集合中元素数量小于512个；
 集合中所有元素都是整数值。
 如果有一个条件不满足，则使用哈希表；且编码只可能由整数集合转化为哈希表，反方向则不可能。
+
 ![test](https://upload-images.jianshu.io/upload_images/8907519-59596ca28cbff921.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 #####5.有序集合
 有序集合的内部编码可以是压缩列表（ziplist）或跳跃表（skiplist）。
@@ -210,6 +227,7 @@ Redis的跳跃表实现由zskiplist和zskiplistNode两个结构组成：前者�
 有序集合中元素数量小于128个；
 有序集合中所有成员长度都不足64字节。
 如果有一个条件不满足，则使用跳跃表；且编码只可能由压缩列表转化为跳跃表，反方向则不可能。
+
 ![test](https://upload-images.jianshu.io/upload_images/8907519-dd232d662454bf67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ##### 五、应用举例
