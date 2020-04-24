@@ -4,7 +4,7 @@ import java.util.*;
 
 import algorithm.structure.TreeNode;
 
-public class Algrithm7 {
+public class Algorithm7 {
     private static Map<Integer, Integer> indexMapForInOrders = new HashMap<>();
 
     public static TreeNode reConstrucTree(int[] pre, int[] in) {

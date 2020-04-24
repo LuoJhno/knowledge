@@ -35,7 +35,7 @@ public class Algorithm6 {
             head = linkNode;
             linkNode = node;
         }
-       // head = head.next;
+
         List<Integer> reverseList = new ArrayList<>();
         while(head!=null){
             reverseList.add(head.value);
