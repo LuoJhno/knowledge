@@ -1,11 +1,14 @@
-#### 一、概述
+Redis内存模型
+=======
+##### 一、概述
 Redis有五种对象类型：String，List，Set，ZSet，Hash。进一步的理解Redis的内存模型，对Redis的使用会有很大的帮助：
 **估算Redis内存使用量**
 **优化内存占用**
-**分析解决问题。** 当Redis出现阻塞、内存占用等问题时，尽快发现导致问题的原因，便于分析解决问题。
+**分析解决问题。** 
+当Redis出现阻塞、内存占用等问题时，尽快发现导致问题的原因，便于分析解决问题。
 本文主要是针对3.0的Redis的内存模型，包括：Redis占用内存的情况及如何查询、不同的对象类型在内存中的编码方式、内存分配器（jemalloc）、简单动态字符串（SDS）,RedisObject等。
-#### 二、Redis内存统计
-##### 1.info memory 
+##### 二、Redis内存统计
+###### 1.info memory 
 ![info memory](https://upload-images.jianshu.io/upload_images/8907519-278777cc0b9243c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 info命令可以显示redis服务器的许多信息，包括服务器基本信息，CPU，内存，持久化，客户端连接信息等；memory是参数，表示只显示内存相关的信息。
 **1.used_memory**
@@ -20,7 +23,7 @@ mem_fragmentation_ratio一般大于1，且该值越大，内存碎片比例越�
 般来说，mem_fragmentation_ratio在1.03左右是比较健康的状态（对于jemalloc来说）；上面截图中的mem_fragmentation_ratio值很大，是因为还没有向Redis中存入数据，Redis进程本身运行的内存使得used_memory_rss 比used_memory大得多。
 **4.mem_allocator**
 Redis使用的内存分配器，在编译时指定，可以使libc、jemalloc或者tcmalloc，默认是jemalloc。
-#### 三、Redis内存划分
+##### 三、Redis内存划分
 Redis作为内存数据库，在内存中存储的内容主要是数据（键值对）。通过前面的叙述可以知道，除了数据以外，Redis的其它部分也会占用内存。
 Redis的内存占用主要可以划分为以下几个部分：
 **1.数据**
@@ -34,20 +37,21 @@ Redis主进程本身运行肯定需要占用内存，如代码、常量池等，
 缓冲内存包括：客户端缓冲区：存储客户端连接的输入输出缓冲；复制积压缓冲区：用于部分复制功能；AOF缓冲区：用于在进行AOF重写时，保存最近的写入命令。在了解相应功能之前，不需要知道这些缓冲的细节。这部分内存由jemalloc分配，因此会统计在used_memory中。
 **4.内存碎片**
 内存碎片是Redis在分配、回收物理内存过程中产生的。例如，如果对数据更改频繁，而且数据之间的大小相差很大，可能导致Redis释放的空间在物理内存中并没有释放，但Redis又无法有效利用，这就形成了内存碎片。内存碎片不会统计在used_memory中。内存碎片的产生与对数据进行的操作、数据的特点等都有关。此外，与使用的内存分配器也有关系——如果内存分配器设计合理，可以尽可能的减少内存碎片的产生。后面将要说到的jemalloc便在控制内存碎片方面做的很好。如果Redis服务器中的内存碎片已经很大，可以通过安全重启的方式减小内存碎片。因为重启之后，Redis重新从备份文件中读取数据，在内存中进行重排，为每个数据重新选择合适的内存单元，减小内存碎片。
-#### 四、Redis数据存储的细节
-##### 1、概述
+##### 四、Redis数据存储的细节
+###### 1、概述
 关于Redis数据存储的细节，设计到内存分配器（jemalloc）、简单动态字符串（SDS）、5中对象类型及内部编码、RedisObject。
-下图是执行set hello world时，所涉及到的数据模型：![hello world](https://upload-images.jianshu.io/upload_images/8907519-fac47bc66889082e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+下图是执行set hello world时，所涉及到的数据模型：
+![hello world](https://upload-images.jianshu.io/upload_images/8907519-fac47bc66889082e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 **dictEntry,**Redis是Key-Value数据库，因此对每个键值对都会用一个dictEntry，里面存储了指向Key和Value的指针；next指向下一个dictEntry，与本Key-Value无关。
 **Key**（“hello”）并不是直接以字符串存储，而是存储在SDS结构中。
 **redisObject,**Value(“world”)既不是直接以字符串存储，也不是像Key一样直接存储在SDS中，而是存储在redisObject中。实际上，不论Value是5种类型的哪一种，都是通过RedisObject来存储的；而RedisObject中的type字段指明了Value对象的类型，ptr字段则指向对象所在的地址。不过可以看出，字符串对象虽然经过了RedisObject的包装，但仍然需要通过SDS存储。实际上，RedisObject除了type和ptr字段以外，还有其它字段图中没有给出，如用于指定对象内部编码的字段。后面会详细介绍。
 **jemalloc**无论是DictEntry对象，还是RedisObject、SDS对象，都需要内存分配器（如jemalloc）分配内存进行存储。以DictEntry对象为例，有3个指针组成，在64位机器下占24个字节，jemalloc会为它分配32字节大小的内存单元。
-#####2、jemalloc
+###### 2、jemalloc
 Redis在编译时便会指定内存分配器；内存分配器可以是 libc 、jemalloc或者tcmalloc，默认是jemalloc。
 jemalloc作为Redis的默认内存分配器，在减小内存碎片方面做的相对比较好。jemalloc在64位系统中，将内存空间划分为小、大、巨大三个范围；每个范围内又划分了许多小的内存块单位；当Redis存储数据时，会选择大小最合适的内存块进行存储。
 ![jemalloc划分的内存单元](https://upload-images.jianshu.io/upload_images/8907519-01d33a8f74500d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 例如，如果需要存储大小为130字节的对象，jemalloc会将其放入160字节的内存单元中。
-##### 3、RedisObject
+###### 3、RedisObject
 Redis对象有5种类型；无论是哪种类型，Redis都不会直接存储，而是通过RedisObject对象进行存储。RedisObject对象非常重要，Redis对象的类型、内部编码、内存回收、共享对象等功能，都需要RedisObject支持，下面将通过RedisObject的结构来说明它是如何起作用的。
 RedisObject的定义如下（不同版本的Redis可能稍稍有所不同）：
 ```
@@ -73,13 +77,13 @@ lru值除了通过object idletime命令打印之外，还与Redis的内存回收
 **refcount**记录该对象被引用的次数，类型为整型，refcount的作用，主要在于对象的引用技术和内存回收：当创建新对象时，refcount初始化为1；当有新程序使用该对象时，refcount加1；当对象不再被一个新程序使用时，refcount减1；当refcount变为0时，对象占用的内存会被释放。
 Redis中被多次使用的对象(refcount>1)称为共享对象。Redis为了节省内存，当有一些对象重复出现时，新的程序不会创建新的对象，而是仍然使用原来的对象。这个重复使用的对象，就是共享对象。目前共享对象仅支持整数值的字符串对象。
 Redis的共享对象目前只支持整数值的字符串对象。之所以如此，实际上是对内存和CPU（时间）的平衡：共享对象虽然会降低内存消耗，但是判断两个对象是否相等却需要消耗额外的时间。对于整数值，判断操作复杂度为O(1)；对于普通字符串，判断复杂度为O(n)；而对于哈希、列表、集合和有序集合，判断的复杂度为O(n^2)。虽然共享对象只能是整数值的字符串对象，但是5种类型都可能使用共享对象（如哈希、列表等的元素可以使用）。
-就目前的实现来说，Redis服务器在初始化时，会创建10000个字符串对象，值分别是0~9999的整数值；当Redis需要使用值为0~9999的字符串对象时，可以直接使用这些共享对象。10000这个数字可以通过调整参数REDIS_SHARED_INTEGERS（4.0中是OBJ_SHARED_INTEGERS）的值进行改变。
-共享对象的引用次数可以通过object refcount命令查看，如下图所示。命令执行的结果页佐证了只有0~9999之间的整数会作为共享对象。
+就目前的实现来说，Redis服务器在初始化时，会创建10000个字符串对象，值分别是0~9999的整数值；当Redis需要使用值为0 ~ 9999的字符串对象时，可以直接使用这些共享对象。10000这个数字可以通过调整参数REDIS_SHARED_INTEGERS（4.0中是OBJ_SHARED_INTEGERS）的值进行改变。
+共享对象的引用次数可以通过object refcount命令查看，如下图所示。命令执行的结果页佐证了只有0 ~ 9999之间的整数会作为共享对象。
 ![object refcount](https://upload-images.jianshu.io/upload_images/8907519-45dc34fd9cb0de88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 **ptr**指针指向具体的数据，如前面的例子中，set hello world，ptr指向包含字符串world的SDS。
 **总结**
 redisObject的结构与对象类型，编码，内存回收，共享对象都有关系；一个redisObject对象的大小为16字节：4bit+4bit+24bit+4Byte+8Byte = 16Byte
-#####4、SDS
+###### 4、SDS
 ```
 struct sdshdr {
     int len;
@@ -98,7 +102,7 @@ SDS在C字符串的基础上加入了free和len字段，带来了很多好处：
 **SDS和C字符串的应用**
 Redis在存储对象时，一律使用SDS代替C字符串。例如set hello world命令，hello和world都是以SDS的形式存储的。而sadd myset member1 member2 member3命令，不论是键“myset”，还是集合中的元素member1、 member2和member3，都是以SDS的形式存储。除了存储对象，SDS还用于存储各种缓冲区。
 只有在字符串不会改变的情况下，如打印日志时，才会使用C字符串
-### 四 、Redis的对象类型和内部编码
+##### 四 、Redis的对象类型和内部编码
 Redis支持5种对象类型，而每种结构都有至少两种编码。这样做的好处在于：一方面接口与实现分离，当需要增加或改变内部编码时，用户使用不受影响，另一方面可以根据不同的应用场景切换内部编码，提高效率。
 ![Redis对象类型和内部编码](https://upload-images.jianshu.io/upload_images/8907519-44d622dee6565b58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 关于Redis内部编码的转换，都符合以下规律：编码吗转换再Redis写入数据时完成，且转换过程不可逆，只能从小内存编码想大内存编码转换。
@@ -208,8 +212,8 @@ Redis的跳跃表实现由zskiplist和zskiplistNode两个结构组成：前者�
 如果有一个条件不满足，则使用跳跃表；且编码只可能由压缩列表转化为跳跃表，反方向则不可能。
 ![test](https://upload-images.jianshu.io/upload_images/8907519-dd232d662454bf67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#### 五、应用举例
-##### 1.估算Redis内存使用量
+##### 五、应用举例
+###### 1.估算Redis内存使用量
 要估算Redis中的数据占据的内存大小，需要对Redis的内存模型有比较全面的了解，包括前面介绍的hashtable、SDS、RedisObject、各种对象类型的编码方式等。
 下面以最简单的字符串类型来进行说明：假设有90000个键值对，每个key的长度是7个字节，每个value的长度也是7个字节（且key和value都不是整数）。
 下面来估算这90000个键值对所占用的空间。在估算占据空间之前，首先可以判定字符串类型使用的编码方式：embstr。90000个键值对占据的内存空间主要可以分为两部分：一部分是90000个dictEntry占据的空间；一部分是键值对所需要的bucket空间。
