@@ -1,0 +1,37 @@
+两个栈实现队列
+====
+[马上解题](https://www.nowcoder.com/practice/9f3231a991af4f55b95579b44b7a01ba?tpId=13&tqId=11159&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
+
+##### 题目描述   
+把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。
+![图解](https://upload-images.jianshu.io/upload_images/8907519-7e05bfe743da3038.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+##### 解题思路
+1. 对数组排序，但是时间复杂度至少为O(logN)，而且需要另外的空间O(N)。
+2. 遍历数组，时间复杂度为O(N)。
+3. 将旋转数组对半分可以得到一个包含最小元素的新旋转数组，以及一个非递减排序的数组。新的旋转数组的数组元素是原数组的一半，从而将问题规模减少了一半，这种折半性质的算法的时间复杂度为 O(logN)（为了方便，这里将 log2N 写为 logN）。
+通过修改二分查找算法进行求解（l 代表 low，m 代表 mid，h 代表 high）：当 nums[m] <= nums[h] 时，表示 [m, h] 区间内的数组是非递减数组，[l, m] 区间内的数组是旋转数组，此时令 h = m；否则 [m + 1, h] 区间内的数组是旋转数组，令 l = m + 1。
+##### 代码
+```
+   /**
+     * 使用二分法查找
+     * 
+     * @param arr
+     * @return
+     */
+    public static int minValueInRotateArr(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] >= arr[right]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+
+        }
+        return arr[left];
+    }
+
+```
