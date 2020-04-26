@@ -29,6 +29,9 @@ Knowledge By ZhengJun Fu
   1. [从尾到头打印链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A36.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm6.java)
   1. [重建二叉树](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A37.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm7.java)
   1. [二叉树的下一个节点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A38.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm8.java)
+  1. [两个栈实现队列](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A39.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm9.java)
+  1. [动态规划系列](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A310.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm10_1.java)
+  1. [旋转数组的最小数字](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A311.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm11.java)
 > **leetcode**
 
 #### 设计模式
