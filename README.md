@@ -40,4 +40,4 @@ Knowledge By ZhengJun Fu
 
 
 #### RabbitMQ
-1. [RabbitMQ持久化]()
+1. [RabbitMQ持久化](https://github.com/LuoJhno/knowledge/blob/master/doc/rabbitMQ/RabbitMQ%E6%8C%81%E4%B9%85%E5%8C%96.md) --- 2020.04.26 17:37
