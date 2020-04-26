@@ -8,7 +8,7 @@ Redis有五种对象类型：String，List，Set，ZSet，Hash。进一步的理
 当Redis出现阻塞、内存占用等问题时，尽快发现导致问题的原因，便于分析解决问题。
 本文主要是针对3.0的Redis的内存模型，包括：Redis占用内存的情况及如何查询、不同的对象类型在内存中的编码方式、内存分配器（jemalloc）、简单动态字符串（SDS）,RedisObject等。
 ##### 二、Redis内存统计
-###### 1.info memory 
+###### 1. info memory 
 
 ![info memory](https://upload-images.jianshu.io/upload_images/8907519-278777cc0b9243c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -40,7 +40,7 @@ Redis主进程本身运行肯定需要占用内存，如代码、常量池等，
 **4.内存碎片**
 内存碎片是Redis在分配、回收物理内存过程中产生的。例如，如果对数据更改频繁，而且数据之间的大小相差很大，可能导致Redis释放的空间在物理内存中并没有释放，但Redis又无法有效利用，这就形成了内存碎片。内存碎片不会统计在used_memory中。内存碎片的产生与对数据进行的操作、数据的特点等都有关。此外，与使用的内存分配器也有关系——如果内存分配器设计合理，可以尽可能的减少内存碎片的产生。后面将要说到的jemalloc便在控制内存碎片方面做的很好。如果Redis服务器中的内存碎片已经很大，可以通过安全重启的方式减小内存碎片。因为重启之后，Redis重新从备份文件中读取数据，在内存中进行重排，为每个数据重新选择合适的内存单元，减小内存碎片。
 ##### 四、Redis数据存储的细节
-###### 1、概述
+###### 1. 概述
 关于Redis数据存储的细节，设计到内存分配器（jemalloc）、简单动态字符串（SDS）、5中对象类型及内部编码、RedisObject。
 下图是执行set hello world时，所涉及到的数据模型：
 
@@ -50,14 +50,14 @@ Redis主进程本身运行肯定需要占用内存，如代码、常量池等，
 **Key**（“hello”）并不是直接以字符串存储，而是存储在SDS结构中。
 **redisObject,**Value(“world”)既不是直接以字符串存储，也不是像Key一样直接存储在SDS中，而是存储在redisObject中。实际上，不论Value是5种类型的哪一种，都是通过RedisObject来存储的；而RedisObject中的type字段指明了Value对象的类型，ptr字段则指向对象所在的地址。不过可以看出，字符串对象虽然经过了RedisObject的包装，但仍然需要通过SDS存储。实际上，RedisObject除了type和ptr字段以外，还有其它字段图中没有给出，如用于指定对象内部编码的字段。后面会详细介绍。
 **jemalloc**无论是DictEntry对象，还是RedisObject、SDS对象，都需要内存分配器（如jemalloc）分配内存进行存储。以DictEntry对象为例，有3个指针组成，在64位机器下占24个字节，jemalloc会为它分配32字节大小的内存单元。
-###### 2、jemalloc
+###### 2. jemalloc
 Redis在编译时便会指定内存分配器；内存分配器可以是 libc 、jemalloc或者tcmalloc，默认是jemalloc。
 jemalloc作为Redis的默认内存分配器，在减小内存碎片方面做的相对比较好。jemalloc在64位系统中，将内存空间划分为小、大、巨大三个范围；每个范围内又划分了许多小的内存块单位；当Redis存储数据时，会选择大小最合适的内存块进行存储。
 
 ![jemalloc划分的内存单元](https://upload-images.jianshu.io/upload_images/8907519-01d33a8f74500d54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 例如，如果需要存储大小为130字节的对象，jemalloc会将其放入160字节的内存单元中。
-###### 3、RedisObject
+###### 3. RedisObject
 Redis对象有5种类型；无论是哪种类型，Redis都不会直接存储，而是通过RedisObject对象进行存储。RedisObject对象非常重要，Redis对象的类型、内部编码、内存回收、共享对象等功能，都需要RedisObject支持，下面将通过RedisObject的结构来说明它是如何起作用的。
 RedisObject的定义如下（不同版本的Redis可能稍稍有所不同）：
 ```
@@ -97,7 +97,7 @@ Redis的共享对象目前只支持整数值的字符串对象。之所以如此
 **ptr**指针指向具体的数据，如前面的例子中，set hello world，ptr指向包含字符串world的SDS。
 **总结**
 redisObject的结构与对象类型，编码，内存回收，共享对象都有关系；一个redisObject对象的大小为16字节：4bit+4bit+24bit+4Byte+8Byte = 16Byte
-###### 4、SDS
+###### 4. SDS
 ```
 struct sdshdr {
     int len;
@@ -119,7 +119,7 @@ SDS在C字符串的基础上加入了free和len字段，带来了很多好处：
 **SDS和C字符串的应用**
 Redis在存储对象时，一律使用SDS代替C字符串。例如set hello world命令，hello和world都是以SDS的形式存储的。而sadd myset member1 member2 member3命令，不论是键“myset”，还是集合中的元素member1、 member2和member3，都是以SDS的形式存储。除了存储对象，SDS还用于存储各种缓冲区。
 只有在字符串不会改变的情况下，如打印日志时，才会使用C字符串
-##### 四 、Redis的对象类型和内部编码
+##### 四. Redis的对象类型和内部编码
 Redis支持5种对象类型，而每种结构都有至少两种编码。这样做的好处在于：一方面接口与实现分离，当需要增加或改变内部编码时，用户使用不受影响，另一方面可以根据不同的应用场景切换内部编码，提高效率。
 
 ![Redis对象类型和内部编码](https://upload-images.jianshu.io/upload_images/8907519-44d622dee6565b58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -139,15 +139,15 @@ embstr和raw进行区分的长度是39是因为RedisObject的长度是16字节�
 
 ![test](https://upload-images.jianshu.io/upload_images/8907519-2244505a9a90a314.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#####2.列表
+##### 2. 列表
 列表用来存储多个有序的字符串，每个字符串称为元素；一个列表可以存储2^32-1个元素。Redis中的列表支持两端插入和弹出，并可以获得制定位置（或元素）的元素，可以充当数组、队列、栈等。
 列表的内部编码可以是压缩链表（ziplist）或者双端链表（linkedlist）。
-**双端链表：**由一个list结构和多个listNode结构组成，典型结构如图所示：
+**双端链表**由一个list结构和多个listNode结构组成，典型结构如图所示：
 
 ![双端链表结构](https://upload-images.jianshu.io/upload_images/8907519-1d65ef5300b75b99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 双端链表同时保存了表头指针和表尾指针，并且每个节点都有指向前和指向后的指针。链表中保存了列表的长度，dup、free和match为节点值设置类型特定函数，所以链表可以用于保存各种不同类型的值。而链表中每个节点指向的是type为字符串的RedisObject。
-**压缩链表：**是Redis为了节约内存而开发的，是由一系列特殊编码的连续内存块（而不是像双端链表一样每个节点是指针）组成的顺序型数据结构；具体结构相对比较复杂，略。与双端链表相比，压缩列表可以节省内存空间，但是进行修改或增删操作时，复杂度较高，因此当节点数量较少时，可以使用压缩列表。但是节点数量多时，还是使用双端链表划算。
+**压缩链表**是Redis为了节约内存而开发的，是由一系列特殊编码的连续内存块（而不是像双端链表一样每个节点是指针）组成的顺序型数据结构；具体结构相对比较复杂，略。与双端链表相比，压缩列表可以节省内存空间，但是进行修改或增删操作时，复杂度较高，因此当节点数量较少时，可以使用压缩列表。但是节点数量多时，还是使用双端链表划算。
 压缩列表不仅用于实现列表，也用于实现哈希、有序列表，使用非常广泛。
 只有同时满足下面两个条件时，才会使用压缩列表：
 列表中元素数量小于512个；
@@ -160,8 +160,8 @@ embstr和raw进行区分的长度是39是因为RedisObject的长度是16字节�
 #####3.哈希
 哈希作为一种数据结构，不仅与字符串、列表、集合、有序结合并列，是Redis对外提供的5种对象类型的一种，也是Redis作为Key-Value数据库所使用的数据结构。为了说明的方便，在本文后面当使用“内层的哈希”时，代表的是Redis对外提供的5种对象类型的一种；使用“外层的哈希”代指Redis作为Key-Value数据库所使用的数据结构。
 内层的哈希使用的内部编码可以是压缩列表（ziplist）和哈希表（hashtable）两种；Redis的外层的哈希则只使用了hashtable。
-**压缩列表：**与哈希表相比，压缩列表用于元素个数少、元素长度小的场景，其优势在于集中存储，节省空间。同时，虽然对于元素的操作复杂度也由O(n)变为了O(1)，但由于哈希中元素数量较少，因此操作的时间并没有明显劣势。
-**hashtable：**一个hashtable由1个dict结构，2个dictht结构，1个dictEntry指针数组（称为bucket）和多个dictEntry结构组成。
+**压缩列表**与哈希表相比，压缩列表用于元素个数少、元素长度小的场景，其优势在于集中存储，节省空间。同时，虽然对于元素的操作复杂度也由O(n)变为了O(1)，但由于哈希中元素数量较少，因此操作的时间并没有明显劣势。
+**hashtable**一个hashtable由1个dict结构，2个dictht结构，1个dictEntry指针数组（称为bucket）和多个dictEntry结构组成。
 正常情况下，即hashtable没有进行rehash时，各部分关系如下图所示：
 
 ![hashtable结构](https://upload-images.jianshu.io/upload_images/8907519-0744a0c4b6497ac9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -200,19 +200,21 @@ sizemask属性的值总是为size-1，这个属性和哈希值一起决定一个
 
 dict：
 一般来说，通过使用dictht和dictEntry结构，便可以实现普通哈希表的功能；但是Redis的实现中，在dictht结构的上层，还有一个dict结构。下面说明dict结构的定义及作用。
+```
 typedef struct dict{
     dictType *type;
     void *privdata;
     dictht ht[2];
     int trehashidx;
 } dict;
+```
 其中，type属性和privdata属性是为了适应不同类型的键值对，用于创建多态字典。ht属性和trehashidx属性则用于rehash，即当哈希表需要扩展或收缩时使用。ht是一个包含两个项的数组，每项都指向一个dictht结构，这也是Redis的哈希会有1个dict、2个dictht结构的原因。通常情况下，所有的数据都是存在放dict的ht[0]中，ht[1]只在rehash的时候使用。dict进行rehash操作的时候，将ht[0]中的所有数据rehash到ht[1]中。然后将ht[1]赋值给ht[0]，并清空ht[1]。因此，Redis中的哈希之所以在dictht和dictEntry结构之外还有一个dict结构，一方面是为了适应不同类型的键值对，另一方面是为了rehash。
 
 如前所述，Redis中内层的哈希既可能使用哈希表，也可能使用压缩列表。只有同时满足下面两个条件时，才会使用压缩列表：哈希中元素数量小于512个；哈希中所有键值对的键和值字符串长度都小于64字节。如果有一个条件不满足，则使用哈希表；且编码只可能由压缩列表转化为哈希表，反方向则不可能。下图展示了Redis内层的哈希编码转换的特点：
 
 ![test](https://upload-images.jianshu.io/upload_images/8907519-55133a793ac50b17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#####4.集合
+##### 4. 集合
 集合（set）与列表类似，都是用来保存多个字符串，但集合与列表有两点不同：集合中的元素是无序的，因此不能通过索引来操作元素；集合中的元素不能有重复。
 一个集合中最多可以存储2^32-1个元素，除了支持常规的增删改查，Redis还支持多个集合取交集、并集、差集。
 集合的内部编码可以是整数集合（intset）或哈希表（hashtable）。
@@ -247,7 +249,7 @@ Redis的跳跃表实现由zskiplist和zskiplistNode两个结构组成：前者�
 
 ![test](https://upload-images.jianshu.io/upload_images/8907519-dd232d662454bf67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##### 五、应用举例
+##### 五.应用举例
 ###### 1.估算Redis内存使用量
 要估算Redis中的数据占据的内存大小，需要对Redis的内存模型有比较全面的了解，包括前面介绍的hashtable、SDS、RedisObject、各种对象类型的编码方式等。
 下面以最简单的字符串类型来进行说明：假设有90000个键值对，每个key的长度是7个字节，每个value的长度也是7个字节（且key和value都不是整数）。
