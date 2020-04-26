@@ -16,7 +16,7 @@ public class Algorithm9 {
                 stack2.push(stack1.pop());
             }
         }
-        stack2.pop();
+       return stack2.pop();
     }
 
     public static void main(String[] arg) {
