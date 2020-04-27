@@ -1,0 +1,68 @@
+矩阵中的路径
+====
+[马上解题](https://www.nowcoder.com/practice/c61c6999eecb4b8f88a98f66b273a3cc?tpId=13&tqId=11218&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
+
+##### 题目描述   
+判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一个格子开始，每一步可以在矩阵中向上下左右移动一个格子。如果一条路径经过了矩阵中的某一个格子，则该路径不能再进入该格子。
+例如下面的矩阵包含了一条 bfce 路径。
+![图解](https://upload-images.jianshu.io/upload_images/8907519-38df940c9f61d68c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+##### 解题思路
+使用回溯法（backtracking）进行求解，它是一种暴力搜索方法，通过搜索所有可能的结果来求解问题。回溯法在一次搜索结束时需要进行回溯（回退），将这一次搜索过程中设置的状态进行清除，从而开始一次新的搜索过程。例如下图示例中，从 f 开始，下一步有 4 种搜索可能，如果先搜索 b，需要将 b 标记为已经使用，防止重复使用。在这一次
+搜索结束之后，需要将 b 的已经使用状态清除，并搜索 c。
+![图解](https://upload-images.jianshu.io/upload_images/8907519-3ab58fc84b8d99c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+本题的输入是数组而不是矩阵（二维数组），因此需要先将数组转换成矩阵。
+
+##### 代码
+```
+    private int[][] steps = { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 } };
+    private int rows;
+    private int cols;
+
+    public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
+        if (cols == 0 || rows == 0) {
+            return false;
+        }
+        this.rows = rows;
+        this.cols = cols;
+        boolean[][] isUsed = new boolean[rows][cols];
+        char[][] newMatrix = this.buildMatrix(matrix, rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (this.backtracking(newMatrix, str, isUsed, 0, i, j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
+
+    private boolean backtracking(char[][] matrix, char[] str, boolean[][] isUsed, int length, int row, int col) {
+        if (length == str.length) {
+            return true;
+        }
+        if (row < 0 || row > rows || col < 0 || col > cols || isUsed[row][col] || matrix[row][col] != str[length]) {
+            return false;
+        }
+        isUsed[row][col] = true;
+        for (int[] n : steps) {
+            if (backtracking(matrix, str, isUsed, length + 1, row + n[0], col + n[1])) {
+                return true;
+            }
+        }
+        isUsed[row][col] = false;
+        return false;
+    }
+
+    private char[][] buildMatrix(char[] matrix, int rows, int cols) {
+        char[][] newMatrix = new char[rows][cols];
+        int index = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                newMatrix[i][j] = matrix[index++];
+            }
+        }
+        return newMatrix;
+    }   
+```
