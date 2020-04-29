@@ -1,6 +1,6 @@
 package algorithm.offer;
 
-public class Algorithm13 {
+public class Algorithm14 {
 
     public static int integerBreak(int n) {
         if (n < 2) {
