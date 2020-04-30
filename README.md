@@ -15,6 +15,9 @@ Knowledge By ZhengJun Fu
 > **JVM**  
 1. [JVM运行时数据区域](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F.md)
 1. [对象生成及判定死亡算法](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM%E5%AF%B9%E8%B1%A1%E7%94%9F%E6%88%90%E5%8F%8A%E5%88%A4%E5%AE%9A%E6%AD%BB%E4%BA%A1%E7%AE%97%E6%B3%95.md)
+1. [对象引用](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8.md)
+1. [垃圾回收算法](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95.md)
+1. [内存分配](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D.md)
 
 > **Redis**
 1. [Redis内存模型](https://github.com/LuoJhno/knowledge/blob/master/doc/redis/Redis%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.md)
