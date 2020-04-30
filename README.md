@@ -10,6 +10,7 @@ Knowledge By ZhengJun Fu
 1. [消息总线](https://github.com/LuoJhno/messageBus)   
   > 比Guava的EventBus更灵活；
     集成MQ，进行服务间的消息通信；
+2. 请求中的加密解密工具-Encry
 
 
 #### 技术文档
