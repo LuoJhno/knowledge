@@ -4,14 +4,21 @@ Knowledge By ZhengJun Fu
 
 #### 日常开发遇到的问题
 1. [关于查询速度慢的解决办法](https://github.com/LuoJhno/knowledge/blob/master/doc/mysql/%E6%9F%A5%E8%AF%A2%E7%BC%93%E6%85%A2%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.md) --- 2020.04.09 11:30
+   
+
+#### 自己开发的技术框架
+1. [消息总线](https://github.com/LuoJhno/messageBus)   
+  > 比Guava的EventBus更灵活；
+    集成MQ，进行服务间的消息通信；
+
 
 
 #### 技术文档
 > **Mybatis**
 1. [MyBatis 源码一](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E6%BA%90%E7%A0%81%E4%B8%80%E7%AE%80%E4%BB%8B.md)  --- 2019.07.10 21:05
-1. [MyBatis 配置解析](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E6%BA%90%E7%A0%81%E4%BA%8C%E4%B9%8B%E9%85%8D%E7%BD%AE%E8%A7%A3%E6%9E%90.md)  --- 2019.07.13 21:46
-1. [Mybatis 映射文件配置](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE.md)  --- 2019.07.14 22:33
-1. [Mybatis 动态SQL](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E5%8A%A8%E6%80%81SQL.md)   --- 2019.07.18 22:27
+2. [MyBatis 配置解析](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E6%BA%90%E7%A0%81%E4%BA%8C%E4%B9%8B%E9%85%8D%E7%BD%AE%E8%A7%A3%E6%9E%90.md)  --- 2019.07.13 21:46
+3. [Mybatis 映射文件配置](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE.md)  --- 2019.07.14 22:33
+4. [Mybatis 动态SQL](https://github.com/LuoJhno/knowledge/blob/master/doc/mybatis/Mybatis%20%E5%8A%A8%E6%80%81SQL.md)   --- 2019.07.18 22:27
 > **JVM**  
 1. [JVM运行时数据区域](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F.md)
 1. [对象生成及判定死亡算法](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM%E5%AF%B9%E8%B1%A1%E7%94%9F%E6%88%90%E5%8F%8A%E5%88%A4%E5%AE%9A%E6%AD%BB%E4%BA%A1%E7%AE%97%E6%B3%95.md)
