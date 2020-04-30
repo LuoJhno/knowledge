@@ -35,6 +35,8 @@ Knowledge By ZhengJun Fu
   1. [剪绳子](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%89%AA%E7%BB%B3%E5%AD%90.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm14.java)
   1. [矩阵中的路径](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm12.java)
   1. [二进制中1的个数](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm15.java)
+  1. [数字的整数次方](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E6%95%B0%E5%AD%97%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm16.java)
+  1. [打印从 1 到最大的 n 位数](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E6%89%93%E5%8D%B0%E4%BB%8E%201%20%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%20n%20%E4%BD%8D%E6%95%B0.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm17.java)
 > **leetcode**
 
 #### 设计模式
