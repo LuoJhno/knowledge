@@ -53,6 +53,8 @@ Knowledge By ZhengJun Fu
   12. [二进制中1的个数](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm15.java)
   13. [数字的整数次方](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E6%95%B0%E5%AD%97%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm16.java)
   14. [打印从 1 到最大的 n 位数](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E6%89%93%E5%8D%B0%E4%BB%8E%201%20%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84%20n%20%E4%BD%8D%E6%95%B0.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm17.java)
+   
+  15. [删除链表节点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/%E5%9C%A8%20O(1)%20%E6%97%B6%E9%97%B4%E5%86%85%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E8%8A%82%E7%82%B9.md) --- [在 O(1) 时间内删除链表节点代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm18.java) --- [删除链表中重复的结点代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm18_2.java)
 > **leetcode**
 
 #### 设计模式
