@@ -35,7 +35,7 @@ Knowledge By ZhengJun Fu
 2. [HTTP](https://github.com/LuoJhno/knowledge/blob/master/doc/computerNetwork/HTTP.md)
 3. [IO](https://github.com/LuoJhno/knowledge/blob/master/doc/computerNetwork/IO.md)
 > **计算机原理**
-1. [计算机操作系统]()
+1. [计算机操作系统](https://github.com/LuoJhno/knowledge/blob/master/doc/operatingSystem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.md)
 
 
 #### 算法
