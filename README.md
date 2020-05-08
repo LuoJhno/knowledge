@@ -5,8 +5,8 @@ Knowledge By ZhengJun Fu
 #### 日常开发遇到的问题
 1. [关于查询速度慢的解决办法](https://github.com/LuoJhno/knowledge/blob/master/doc/mysql/%E6%9F%A5%E8%AF%A2%E7%BC%93%E6%85%A2%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.md) --- 2020.04.09 11:30
 2. [自定义异常处理封装](https://github.com/LuoJhno/knowledge/tree/master/code/src/java_exception_wrapper) --- 2020.05.06 15:44
-3. [EffectiveJava总结](https://github.com/LuoJhno/knowledge/blob/master/doc/effectiveJava/EffectiveJava%E6%80%BB%E7%BB%93.md)
-4. [Java内存泄漏问题]()
+3. [EffectiveJava总结](https://github.com/LuoJhno/knowledge/blob/master/doc/effectiveJava/EffectiveJava%E6%80%BB%E7%BB%93.md) ---  2019.05.30 09:22
+4. [Java内存泄漏问题](https://github.com/LuoJhno/knowledge/blob/master/doc/java/Java%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F.md) --- 2019.05.09 11:58
    
 
 #### 自己开发的技术框架
