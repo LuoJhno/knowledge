@@ -63,7 +63,8 @@ Knowledge By ZhengJun Fu
 1. [策略模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F.md)   [代码CODE](https://github.com/LuoJhno/knowledge/tree/master/code/src/designPatterns/strategy) --- 2019.05.20 16:19
 2. [观察者模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.md)   [代码CODE](https://github.com/LuoJhno/knowledge/tree/master/code/src/designPatterns/observer)  --- 2019.05.21 14:49
 3. [装饰者模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.md)   [代码CODE](https://github.com/LuoJhno/knowledge/tree/master/code/src/designPatterns/decorator)  --- 2019.05.22 14:49
-3. [单例模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.md)   [代码CODE](https://github.com/LuoJhno/knowledge/tree/master/code/src/designPatterns/singleton)  --- 2019.05.23 13:56
+4. [单例模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.md)   [代码CODE](https://github.com/LuoJhno/knowledge/tree/master/code/src/designPatterns/singleton)  --- 2019.05.23 13:56
+5. [适配器模式](https://github.com/LuoJhno/knowledge/blob/master/doc/designPatterns/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F.md)   [代码CODE](https://github.com/LuoJhno/knowledge/tree/master/code/src/designPatterns/adapter)  --- 2019.05.24 14:13
 
 #### RabbitMQ
 1. [RabbitMQ持久化](https://github.com/LuoJhno/knowledge/blob/master/doc/rabbitMQ/RabbitMQ%E6%8C%81%E4%B9%85%E5%8C%96.md) --- 2020.04.26 17:37
