@@ -30,7 +30,7 @@ Knowledge By ZhengJun Fu
 1. [内存分配](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D.md)
 2. [内存模型](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM内存模型.md)
 3. [类加载机制](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM类加载机制.md)
-4. [类加载机制](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM类加载机制.md)
+4. [垃圾收集器](https://github.com/LuoJhno/knowledge/blob/master/doc/jvm/JVM垃圾收集器.md)
 
 > **Redis**
 1. [Redis内存模型](https://github.com/LuoJhno/knowledge/blob/master/doc/redis/Redis%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.md)
