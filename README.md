@@ -63,6 +63,13 @@ Knowledge By ZhengJun Fu
   16. [表示数值的字符串](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/表示数值的字符串.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm20.java)
   17. [调整数组顺序使奇数位于偶数前面](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/调整数组顺序使奇数位于偶数前面.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm21.java)
   18. [链表中倒数第K个结点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/链表中倒数第K个结点.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm22.java)
+  18. [链表中的入口节点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/链表中的入口节点.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm23.java)
+  19.  [反转链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/反转链表.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm24.java)
+
+
+
+
+
 > **leetcode**
 
 #### 设计模式
