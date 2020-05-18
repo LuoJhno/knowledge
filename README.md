@@ -34,6 +34,9 @@ Knowledge By ZhengJun Fu
 
 > **Redis**
 1. [Redis内存模型](https://github.com/LuoJhno/knowledge/blob/master/doc/redis/Redis%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.md)
+
+> **数据库**
+1. [读写分离](https://github.com/LuoJhno/knowledge/blob/master/doc/mysql/读写分离.md)
   
 > **计算机网络**
 1. [计算网络基础](https://github.com/LuoJhno/knowledge/blob/master/doc/computerNetwork/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.md)
@@ -65,9 +68,6 @@ Knowledge By ZhengJun Fu
   18. [链表中倒数第K个结点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/链表中倒数第K个结点.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm22.java)
   18. [链表中的入口节点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/链表中的入口节点.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm23.java)
   19.  [反转链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/反转链表.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm24.java)
-
-
-
 
 
 > **leetcode**
