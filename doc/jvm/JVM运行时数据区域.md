@@ -5,6 +5,7 @@ Java虚拟机在执行java程序的过程中会把它管理的内存划分为若
 
 方法区（Method Area）,虚拟机栈（VM Stack），本地方法栈（Native Method Stack），堆（Heap），程序计数器（Program Couter Register）
 ![图解](https://upload-images.jianshu.io/upload_images/8907519-88132a26a2e08b2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![详情](/doc/jvm/pic/运行时数据区.png)
 
 ##### 程序计数器
 内存空间小，可以看作是当前线程锁执行字节码的行号指示器。字节码解释器工作时通过改变程序计数器的值来选取下一条需要执行的字节码指令。
