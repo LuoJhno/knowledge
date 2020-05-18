@@ -1,0 +1,11 @@
+@startuml
+title 组合关系
+
+class 总体
+class 部分1
+class 部分2
+
+总体 *-- 部分1
+总体 *-- 部分2
+
+@enduml

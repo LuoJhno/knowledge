@@ -1,0 +1,10 @@
+@startuml
+title 接口实现关系
+
+interface 接口
+class 实现类1
+class 实现类2
+
+接口 <|.. 实现类1
+接口 <|.. 实现类2
+@enduml

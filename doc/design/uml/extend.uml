@@ -1,0 +1,10 @@
+@startuml
+title 继承关系
+
+class 父类
+class 子类1
+class 子类2
+
+父类 <|-- 子类1
+父类 <|-- 子类2
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+
+title 聚合关系
+
+class 主体
+class 元件1
+class 元件2
+class 元件3
+
+主体 o-- 元件1
+主体 o-- 元件2
+主体 o-- 元件3
+
+@enduml
