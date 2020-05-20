@@ -24,14 +24,13 @@ B+ Tree 是基于B Tree 和叶子节点顺序访问指针进行实现，它具�
    * 如果某个指针在节点node最左边且不为null，则其指向节点的所有key小于v(key1)，其中v(key1)为node的第一个key的值。
    * 如果某个指针在节点node最右边且不为null，则其指向节点的所有key大于v(keym)，其中v(keym)为node的最后一个key的值。
    * 如果某个指针在节点node的左右相邻key分别是keyi和keyi+1且不为null，则其指向节点的所有key小于v(keyi+1)且大于v(keyi)。
-* 
 ![d=2的B-Tree](./pic/B-Tree.png)
 由于B-Tree的特性，在B-Tree中按key检索数据的算法非常直观：首先从根节点进行二分查找，如果找到则返回对应节点的data，否则对相应区间的指针指向的节点递归进行查找，直到找到节点或找到null指针，前者查找成功，后者查找失败。B-Tree上查找算法的伪代码如下：
 ![B-Tree查找伪代码](./pic/B-Tree查找伪代码.png)
 B-Tree有一些性质，一个度为d的B-Tree，设其索引N个key:
    * 其树高h的上限为logd((N+1)/2);
    * 检索一个key，时间复杂度为O(logdN)。
-3. B+Tree
+1. B+Tree
 B+Tree是B-Tree的变种，MySQL普遍使用B+Tree实现索引结构。
 与B-Tree相比，每个节点的指针上限为2d而不是2d+1；内存节点不存储data，只存储key；叶子节点不存储指针。
 在 B+ Tree 中，一个节点中的 key 从左到右非递减排列，如果某个指针的左右相邻 key 分别是 keyi 和 keyi+1，且不为 null，则该指针指向节点的所有 key 大于等于 keyi 且小于等于 keyi+1。

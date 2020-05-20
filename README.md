@@ -74,6 +74,8 @@ Knowledge By ZhengJun Fu
   18. [链表中倒数第K个结点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/链表中倒数第K个结点.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm22.java)
   18. [链表中的入口节点](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/链表中的入口节点.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm23.java)
   19.  [反转链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/反转链表.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm24.java)
+  20.  [合并两个排序的链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/合并两个排序的链表.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm25.java)
+  21.  [树的子结构](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/树的子结构.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm26.java)
 
 
 > **leetcode**
