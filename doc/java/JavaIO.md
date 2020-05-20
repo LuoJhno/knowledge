@@ -96,19 +96,19 @@ I/O 包和 NIO 已经很好地集成了，java.io.\* 已经以 NIO 为基础重�
   - DoubleBuffer
 
 3. 缓冲区状态变量
-- capacity：最大容量；
-- position：当前已经读写的字节数；
-- limit：还可以读写的字节数。
-> 状态变量的改变过程举例：
+ capacity：最大容量；
+ position：当前已经读写的字节数；
+ limit：还可以读写的字节数。
+* 状态变量的改变过程举例：
 新建一个大小为 8 个字节的缓冲区，此时 position 为 0，而 limit = capacity = 8。capacity 变量不会改变，下面的讨论会忽略它。
 ![buffer1](/doc/java/pic/buffer1.png)
-> 从输入通道中读取 5 个字节数据写入缓冲区中，此时 position 为 5，limit 保持不变。
+* 从输入通道中读取 5 个字节数据写入缓冲区中，此时 position 为 5，limit 保持不变。
 ![buffer2](/doc/java/pic/buffer2.png)
-> 在将缓冲区的数据写到输出通道之前，需要先调用 flip() 方法，这个方法将 limit 设置为当前 position，并将 position 设置为 0。
+* 在将缓冲区的数据写到输出通道之前，需要先调用 flip() 方法，这个方法将 limit 设置为当前 position，并将 position 设置为 0。
 ![buffer3](/doc/java/pic/buffer3.png)
-> 从缓冲区中取 4 个字节到输出缓冲中，此时 position 设为 4。
+* 从缓冲区中取 4 个字节到输出缓冲中，此时 position 设为 4。
 ![buffer4](/doc/java/pic/buffer4.png)
-> 最后需要调用 clear() 方法来清空缓冲区，此时 position 和 limit 都被设置为最初位置。
+* 最后需要调用 clear() 方法来清空缓冲区，此时 position 和 limit 都被设置为最初位置。
 ![buffer5](/doc/java/pic/buffer5.png)
 
 4. 文件 NIO 实例
