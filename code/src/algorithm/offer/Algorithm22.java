@@ -1,7 +1,5 @@
 package algorithm.offer;
 
-import java.util.List;
-
 import algorithm.structure.ListNode;
 
 public class Algorithm22 {

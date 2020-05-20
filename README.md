@@ -77,6 +77,8 @@ Knowledge By ZhengJun Fu
   19.  [反转链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/反转链表.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm24.java)
   20.  [合并两个排序的链表](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/合并两个排序的链表.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm25.java)
   21.  [树的子结构](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/树的子结构.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm26.java)
+  22.  [二叉树的镜像](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/二叉树的镜像.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm27.java)
+  23.  [对称二叉树](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/对称二叉树.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm28.java)
 
 
 > **leetcode**
