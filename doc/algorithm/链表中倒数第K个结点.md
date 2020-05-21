@@ -10,7 +10,7 @@
 ![图片](https://upload-images.jianshu.io/upload_images/8907519-6bd359f514343f30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ##### 代码
-```
+```java
 public ListNode findKthTrail(ListNode head, int k) {
         if (head == null || k == 0) {
             return null;
