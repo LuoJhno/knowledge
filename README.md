@@ -35,6 +35,7 @@ Knowledge By ZhengJun Fu
 > **JAVA**
 1. [静态代理，动态代理，CGLIB代理](https://github.com/LuoJhno/knowledge/blob/master/doc/java/静态代理，动态代理，CGLIB代理.md)
 2. [JavaIO](https://github.com/LuoJhno/knowledge/blob/master/doc/java/JavaIO.md)
+3. [Java锁](https://github.com/LuoJhno/knowledge/blob/master/doc/java/Java锁.md)
 
 > **MYSQL**
 1. [B+Tree及MySQL索引](https://github.com/LuoJhno/knowledge/blob/master/doc/mysql/B+Tree及MySQL索引.md)
