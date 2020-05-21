@@ -80,6 +80,8 @@ Knowledge By ZhengJun Fu
   21.  [树的子结构](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/树的子结构.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm26.java)
   22.  [二叉树的镜像](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/二叉树的镜像.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm27.java)
   23.  [对称二叉树](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/对称二叉树.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm28.java)
+  24.  [顺时针打印矩阵](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/顺时针打印矩阵.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm29.java)
+  25. [包含min的最小栈](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/包含min的最小栈.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm30.java)
 
 
 > **leetcode**
