@@ -86,6 +86,10 @@ Knowledge By ZhengJun Fu
   26. [栈的压入、弹出序列](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/栈的压入、弹出序列.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm31.java)
   27. [打印二叉树序列](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/打印二叉树序列.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm32_1.java)
   28. [二叉搜索树的后续遍历序列](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/二叉搜索树的后续遍历序列.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm33.java)
+  29. [二叉树中和为某一值的路径](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/二叉树中和为某一值的路径.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm34_1.java)
+  30. [路径总和](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/路径总和.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm34_2.java)
+  31. [路径总和1](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/路径总和1.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm34_3.java)
+
 
 > **leetcode**
 
