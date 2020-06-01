@@ -85,6 +85,7 @@ Knowledge By ZhengJun Fu
   25. [包含min的最小栈](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/包含min的最小栈.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm30.java)
   26. [栈的压入、弹出序列](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/栈的压入、弹出序列.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm31.java)
   27. [打印二叉树序列](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/打印二叉树序列.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm32_1.java)
+  28. [二叉搜索树的后续遍历序列](https://github.com/LuoJhno/knowledge/blob/master/doc/algorithm/二叉搜索树的后续遍历序列.md) --- [代码CODE](https://github.com/LuoJhno/knowledge/blob/master/code/src/algorithm/offer/Algorithm33.java)
 
 > **leetcode**
 
