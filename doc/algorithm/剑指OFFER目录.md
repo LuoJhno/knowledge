@@ -32,3 +32,4 @@
 30. [二叉树中和为某一值的路径](./doc/algorithm/二叉树中和为某一值的路径.md) --- [代码CODE](./code/src/algorithm/offer/Algorithm34_1.java)
 31. [路径总和](./doc/algorithm/路径总和.md) --- [代码CODE](./code/src/algorithm/offer/Algorithm34_2.java)
 32. [路径总和1](./doc/algorithm/路径总和.md) --- [代码CODE](./code/src/algorithm/offer/Algorithm34_3.java)
+33. [复杂链表的复制](./doc/algorithm/复杂链表的复制.md) --- [代码CODE](./code/src/algorithm/offer/Algorithm35.java)
