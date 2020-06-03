@@ -47,6 +47,8 @@ Knowledge By ZhengJun Fu
 > **计算机原理**
   * [计算机操作系统](./doc/operatingSystem/计算机操作系统.md)
 
+#### 数据结构
+  * [八大数据结构](./doc/algorithm/dataStructure/八大数据结构.md)
 #### 算法
   * [剑指OFFER](./doc/algorithm/offer/剑指OFFER目录.md) 
   * [leetcode]()
