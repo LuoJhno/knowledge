@@ -48,7 +48,7 @@ Knowledge By ZhengJun Fu
   * [计算机操作系统](./doc/operatingSystem/计算机操作系统.md)
 
 #### 算法
-  * [剑指OFFER](./doc/algorithm/剑指OFFER目录.md) 
+  * [剑指OFFER](./doc/algorithm/offer/剑指OFFER目录.md) 
   * [leetcode]()
 
 
