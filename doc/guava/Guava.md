@@ -18,8 +18,8 @@ Guava工程包含多个核心库，例如：集合 [collections] 、缓存 [cach
 Guava对JDK集合的扩展，这是Guava最成熟和为人所知的部分
 1. [不可变集合](./collections/不可变集合.md): 用不变的集合进行防御性编程和性能提升。
 2. [新集合类型](./collections/新集合类型.md): multisets, multimaps, tables, bidirectional maps等
-3. 强大的集合工具类: 提供java.util.Collections中没有的集合工具
-4. 扩展工具类：让实现和扩展集合类变得更容易，比如创建Collection的装饰器，或实现迭代器
+3. [强大的集合工具类](./collections/强大的集合工具类.md): 提供java.util.Collections中没有的集合工具
+4. [扩展工具类](./collections/强大的集合工具类.md)：让实现和扩展集合类变得更容易，比如创建Collection的装饰器，或实现迭代器
 ## 缓存[Caches]
 Guava Cache：本地缓存实现，支持多种缓存过期策略
 ## 函数式风格[Functional idioms]
