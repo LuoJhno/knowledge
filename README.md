@@ -32,6 +32,7 @@ Knowledge By ZhengJun Fu
 
 > **MYSQL**
    * [B+Tree及MySQL索引](./doc/mysql/B+Tree及MySQL索引.md)
+   * [Explain执行计划](./doc/mysql/MySQLExplain/Explain执行计划.md)
 
 > **Redis**
   * [Redis内存模型](./doc/redis/Redis内存模型.md)
