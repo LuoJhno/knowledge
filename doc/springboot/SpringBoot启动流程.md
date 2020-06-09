@@ -152,7 +152,8 @@ public ConfigurableApplicationContext run(String... args) {
 该方法中实现了如下几个关键步骤：
 * 创建了应用的监听器SpringApplicationRunListeners并开始监听
 * 加载SpringBoot配置环境(ConfigurableEnvironment)，如果是通过web容器发布，会加载StandardEnvironment，其最终也是继承了ConfigurableEnvironment，类图如下：
-![standardEnviroment](./pic/standardEnvironment.png)
+
+    ![standardEnviroment](./pic/standardEnvironment.png)
 可以看出，Environment最终都实现了PropertyResolver接口，我们平时通过environment对象获取配置文件中指定Key对应的value方法时，就是调用了propertyResolver接口的getProperty方法
 * 配置环境(Environment)加入到监听器对象中(SpringApplicationRunListeners)
 * 创建run方法的返回对象：ConfigurableApplicationContext(应用配置上下文)，我们可以看一下创建方法：
