@@ -35,3 +35,5 @@
 33. [复杂链表的复制](./复杂链表的复制.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm35.java)
 34. [二叉搜索树与双向链表](./二叉搜索树与双向链表.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm36.java)
 35. [序列化二叉树](./序列化二叉树.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm37.java)
+36. [字符串的排列](./字符串的排列.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm38.java)
+37. [数组中出现次数超过一半的数字](./数组中出现次数超过一半的数字.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm39.java)
