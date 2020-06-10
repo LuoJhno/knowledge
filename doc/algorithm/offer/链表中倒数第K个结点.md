@@ -1,6 +1,6 @@
 链表中倒数第K个结点
 ====
-[马上解题](https://www.nowcoder.com/practice/529d3ae5a407492994ad2a246518148a?tpId=13&tqId=11167&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
+
 
 ##### 题目描述   
 

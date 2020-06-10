@@ -37,3 +37,5 @@
 35. [序列化二叉树](./序列化二叉树.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm37.java)
 36. [字符串的排列](./字符串的排列.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm38.java)
 37. [数组中出现次数超过一半的数字](./数组中出现次数超过一半的数字.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm39.java)
+38. [最小的K个数](./最小的K个数.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm40.java)
+39. [数据流中的中位数](./数据流中的中位数.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm41_1.java)
