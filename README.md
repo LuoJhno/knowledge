@@ -29,10 +29,9 @@ Knowledge By ZhengJun Fu
 > **JAVA**
    * [静态代理，动态代理，CGLIB代理](./doc/java/静态代理，动态代理，CGLIB代理.md)
    * [JavaIO](./doc/java/JavaIO.md)
-   * [Java锁](./doc/java/Java锁.md)
-   * [线程池](./doc/java/线程池.md)
-   * [阻塞队列](./doc/java/阻塞队列.md)
-   
+   * [Java并发](./doc/java/Java并发.md)
+   * [进程调度算法](./doc/java/进程调度算法.md)
+  
 
 
 > **MYSQL**
