@@ -39,3 +39,4 @@
 37. [数组中出现次数超过一半的数字](./数组中出现次数超过一半的数字.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm39.java)
 38. [最小的K个数](./最小的K个数.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm40.java)
 39. [数据流中的中位数](./数据流中的中位数.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm41_1.java)
+40. [字符流中第一个不重复的字符](./字符流中第一个不重复的字符.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm41_2.java)
