@@ -30,7 +30,6 @@ Knowledge By ZhengJun Fu
    * [静态代理，动态代理，CGLIB代理](./doc/java/静态代理，动态代理，CGLIB代理.md)
    * [JavaIO](./doc/java/JavaIO.md)
    * [Java并发](./doc/java/Java并发.md)
-   * [进程调度算法](./doc/java/进程调度算法.md)
   
 
 
@@ -51,6 +50,7 @@ Knowledge By ZhengJun Fu
 
 > **计算机原理**
   * [计算机操作系统](./doc/operatingSystem/计算机操作系统.md)
+  * [进程调度算法](./doc/java/进程调度算法.md)
 
 #### 数据结构
   * [八大数据结构](./doc/algorithm/dataStructure/八大数据结构.md)
