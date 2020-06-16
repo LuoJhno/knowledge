@@ -31,4 +31,23 @@ public class Solution2 {
         return head.next;
     }
 
+    /**
+     * 使用递归实现
+     */
+    public ListNode addTwoNumbersByRecursion(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode(0);
+        helper(head, l1, l2, 0);
+        return head.next;
+    }
+
+    private void helper(ListNode result, ListNode l1, ListNode l2, int carry) {
+        if (l1 == null && l2 == null && carry == 0)
+            return;
+        int sum = (l1 != null ? l1.value : 0) + (l2 != null ? l2.value : 0) + carry;
+        result.next = new ListNode(sum % 10);
+        carry = sum / 10;
+        helper(result.next, l1 != null ? l1.next : null, l2 != null ? l2.next : null, carry);
+    }
+
+
 }
