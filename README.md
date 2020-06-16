@@ -57,7 +57,7 @@ Knowledge By ZhengJun Fu
   * [八大数据结构](./doc/algorithm/dataStructure/八大数据结构.md)
 #### 算法
   * [剑指OFFER](./doc/algorithm/offer/剑指OFFER目录.md) 
-  * [leetcode]()
+  * [leetcode](./doc/algorithm/leetcode/LeetCode目录.md)
 
 
 #### 设计原则
