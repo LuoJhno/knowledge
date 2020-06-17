@@ -57,15 +57,15 @@ Knowledge By ZhengJun Fu
   * [八大数据结构](./doc/algorithm/dataStructure/八大数据结构.md)
 #### 算法
   * [剑指OFFER](./doc/algorithm/offer/剑指OFFER目录.md) 
-  * [leetcode](./doc/algorithm/leetcode/LeetCode目录.md)
+  * [Leetcode](./doc/algorithm/leetcode/LeetCode目录.md)
 
 
 #### 设计原则
   * [设计原则](./doc/design/设计原则.md)
   * [设计模式](./doc/designPatterns/设计模式目录.md)
 
-#### RabbitMQ
+#### RABBITMQ
   * [RabbitMQ持久化](./doc/rabbitMQ/RabbitMQ持久化.md)
 
-#### vim
-  * [vim命令](./doc/vim/vim命令.md)
+#### VIM
+  * [Vim命令](./doc/vim/vim命令.md)
