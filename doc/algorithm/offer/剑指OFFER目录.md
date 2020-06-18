@@ -40,3 +40,5 @@
 38. [最小的K个数](./最小的K个数.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm40.java)
 39. [数据流中的中位数](./数据流中的中位数.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm41_1.java)
 40. [字符流中第一个不重复的字符](./字符流中第一个不重复的字符.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm41_2.java)
+41. [连续子数组的最大和](./连续子数组的最大和.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm42.java)
+42. [1～n整数中1出现的次数](./1～n整数中1出现的次数.md) --- [代码CODE](./../../../code/src/algorithm/offer/Algorithm43.java)
