@@ -75,3 +75,4 @@ Knowledge By ZhengJun Fu
 
 #### 分布式
   * [分布式Session共享](./doc/分布式/分布式Session共享.md)
+  * [分布式事务Seata](./doc/分布式/分布式事务之Seata.md)
