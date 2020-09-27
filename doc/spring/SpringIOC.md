@@ -64,29 +64,27 @@ session：在一次Http Session 中，容器会返回该Bean 的同一实例。�
 global Session：在一个全局的Http Session 中，容器会返回该Bean 的同一个实例，仅在使用portlet context 时有效。
 
 ### Spring Bean 生命周期
-* 实例化
+* 实例化:
   实例化一个Bean，也就是我们常说的new。
-
-* IOC 依赖注入
+* IOC 依赖注入:
   按照Spring 上下文对实例化的Bean 进行配置，也就是IOC 注入。
 
-* setBeanName 实现
+* setBeanName 实现: 
   如果这个Bean 已经实现了BeanNameAware 接口，会调用它实现的setBeanName(String)方法，此处传递的就是Spring 配置文件中Bean 的id 值
-* BeanFactoryAware 实现
+* BeanFactoryAware 实现:
   如果这个Bean 已经实现了BeanFactoryAware 接口，会调用它实现的setBeanFactory，setBeanFactory(BeanFactory)传递的是Spring 工厂自身（可以用这个方式来获取其它Bean，只需在Spring 配置文件中配置一个普通的Bean 就可以）。
-* ApplicationContextAware 实现
+* ApplicationContextAware 实现:
   如果这个Bean 已经实现了ApplicationContextAware 接口，会调用setApplicationContext(ApplicationContext)方法，传入Spring 上下文（同样这个方式也可以实现步骤4 的内容，但比4 更好，因为ApplicationContext 是BeanFactory 的子接口，有更多的实现方法）
-* postProcessBeforeInitialization 接口实现--初始化预处理
-  如果这个Bean 关联了BeanPostProcessor 接口，将会调用
-postProcessBeforeInitialization(Object obj, String s)方法，BeanPostProcessor 经常被用作是Bean 内容的更改，并且由于这个是在Bean 初始化结束时调用那个的方法，也可以被应用于内存或缓存技术。
-* init-method
+* postProcessBeforeInitialization 接口实现-初始化预处理:
+  如果这个Bean 关联了BeanPostProcessor 接口，将会调用postProcessBeforeInitialization(Object obj, String s)方法，BeanPostProcessor 经常被用作是Bean 内容的更改，并且由于这个是在Bean 初始化结束时调用那个的方法，也可以被应用于内存或缓存技术。
+* init-method:
   如果Bean 在Spring 配置文件中配置了init-method 属性会自动调用其配置的初始化方法。
-* postProcessAfterInitialization
+* postProcessAfterInitialization:
   如果这个Bean 关联了BeanPostProcessor 接口，将会调用postProcessAfterInitialization(Object obj, String s)方法。
 注：以上工作完成以后就可以应用这个Bean 了，那这个Bean 是一个Singleton 的，所以一般情况下我们调用同一个id 的Bean 会是在内容地址相同的实例，当然在Spring 配置文件中也可以配置非Singleton。
-* Destroy 过期自动清理阶段
+* Destroy 过期自动清理阶段:
   当Bean 不再需要时，会经过清理阶段，如果Bean 实现了DisposableBean 这个接口，会调用那个其实现的destroy()方法；
-* destroy-method 自配置清理
+* destroy-method 自配置清理:
   最后，如果这个Bean 的Spring 配置中配置了destroy-method 属性，会自动调用其配置的销毁方法。
 ![Bean的生命周期](./pic/Bean的生命周期.jpg)
 
