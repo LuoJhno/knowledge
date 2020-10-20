@@ -3,7 +3,7 @@ Knowledge By ZhengJun Fu
 **联系方式:微信- luo540088249**
 
 #### 学习路线
-  * [Java学习路线](./doc/learnPlan/Java学习路线.md)
+  * [Java学习路线](./doc/learnPlan/Java学习路线导图.html)
 
 #### 日常开发遇到的问题
   * [关于查询速度慢的解决办法](./doc/mysql/查询缓慢解决办法.md)
