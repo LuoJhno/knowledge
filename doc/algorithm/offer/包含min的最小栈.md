@@ -16,6 +16,7 @@ private int min = Integer.MAX_VALUE;
 public void push(int num) {
     if (num < min) {
         stack.push(min);
+        min = num;
     }
     stack.push(num);
 }
