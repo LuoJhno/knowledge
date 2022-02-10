@@ -86,5 +86,4 @@ Knowledge By ZhengJun Fu
 #### 容器-Docker
 #### 工具-Gitlab ci/cd
 #### 工具-Cloud
-
-#### shell
+#### 语言-shell
