@@ -85,5 +85,6 @@ LEARN ROAD
 #### 集群-Kubernets
 #### 容器-Docker
 #### 工具-Gitlab ci/cd
+* 搭建Gitlab runner
 #### 工具-Cloud
 #### 语言-shell
